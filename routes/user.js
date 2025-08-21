@@ -19,4 +19,8 @@ router.route("/login")
 
 router.get("/logout", userController.logout);
 
+router.get("/", async (req, res) => {
+    res.redirect("/listings");
+});
+
 module.exports = router;

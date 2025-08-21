@@ -5,8 +5,8 @@ module.exports.createReview = async (req, res) => {
     const listing = await Listing.findById(req.params.id);
     const newreview = new Review(req.body.review);
     newreview.author = req.user._id;
-    listing.reviews.push(newreview);
     await newreview.save();
+listing.reviews.push(newreview._id);
     await listing.save();
     req.flash("success", "Successfully created a new review!");
     res.redirect(`/listings/${listing._id}`);

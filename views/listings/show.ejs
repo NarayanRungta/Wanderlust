@@ -61,3 +61,36 @@
 <% } %>
 
 <hr />
+<div class="col-8 offset-3 mb-3">
+  <h4 class="mb-4"><i class="fa-solid fa-star text-warning"></i> Reviews</h4>
+  <% if(listing.reviews && listing.reviews.length > 0) { %>
+    <% listing.reviews.forEach(function(review) { %>
+      <div class="card mb-3 shadow-sm border-0" style="background: #f8f9fa;">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2">
+            <div>
+              <% for(let i=1; i<=5; i++) { %>
+                <% if(i <= review.rating) { %>
+                  <i class="fa-solid fa-star text-warning"></i>
+                <% } else { %>
+                  <i class="fa-regular fa-star text-warning"></i>
+                <% } %>
+              <% } %>
+            </div>
+            <% if(review.author && review.author.username) { %>
+              <span class="ms-3 fw-semibold" style="color:#333;"><%= review.author.username %></span>
+            <% } %>
+            <span class="ms-3" style="font-size:0.9em; color:gray;">
+              <%= new Date(review.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+            </span>
+          </div>
+          <p class="card-text" style="font-size:1.1em; color:#444; margin-bottom:0;">
+            <%= review.comment %>
+          </p>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <div class="alert alert-info">No reviews yet. Be the first to review!</div>
+  <% } %>
+</div>

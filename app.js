@@ -21,7 +21,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 // const { cookie } = require("express/lib/response.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = "mongodb+srv://rungtanarayan002:MlPU1SF3XnSxqbyG@cluster0.ujr1hmc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 main()
     .then(() => {
